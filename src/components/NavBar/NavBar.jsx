@@ -13,6 +13,7 @@ import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
 
 import SearchBar from './SearchBar';
+import CartWidget from './CartWidget';
 
 const pages = ['Desktops', 'Notebooks', 'Gadgets', 'Contacto'];
 const settings = ['Cerrar sesión'];
@@ -98,15 +99,17 @@ const NavBar = () => {
               </Button>
             ))}
           </Box>
-          <Container maxWidth='xs'>
+          <Container maxWidth='xs' disableGutters>
             <SearchBar />
           </Container>
+          <CartWidget />
           <Box>
             <Tooltip title='Perfil'>
               <IconButton onClick={handleOpenUserMenu}>
                 <Avatar src='/broken-image.jpg' />
               </IconButton>
             </Tooltip>
+
             <Menu
               sx={{ mt: '45px' }}
               id='menu-appbar'
