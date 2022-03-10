@@ -41,7 +41,7 @@ const NavBar = () => {
     <AppBar position='static' sx={{ bgcolor: '#84022e' }}>
       <Container maxWidth='xl'>
         <Toolbar disableGutters>
-          <Box sx={{ mr: 1 }}>
+          <Box marginRight={1}>
             <a href='/'>
               <img
                 src='../../src/assets/img/lanus-logo.svg'
