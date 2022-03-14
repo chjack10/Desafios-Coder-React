@@ -65,7 +65,12 @@ const MenuNavList = () => {
           <Button
             key={page}
             onClick={handleCloseNavMenu}
-            sx={{ my: 2, color: 'white', display: 'block' }}>
+            sx={{
+              my: 2,
+              color: '#bdbdbd',
+              '&:hover': { color: 'white' },
+              display: 'block',
+            }}>
             {page}
           </Button>
         ))}

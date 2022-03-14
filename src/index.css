@@ -282,6 +282,10 @@ Interactive
 Add the correct display in Chrome and Safari.
 */
 
+/*
+Disable arrows for number type inputs
+*/
+
 summary {
   display: list-item;
 }
