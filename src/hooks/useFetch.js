@@ -32,7 +32,7 @@ export const useFetch = (url) => {
         setState({
           data: null,
           loading: false,
-          error: 'No se pudo cargar la info',
+          error: 'Could not load data',
         });
       });
   }, [url]);

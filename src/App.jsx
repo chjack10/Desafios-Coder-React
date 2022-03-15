@@ -10,7 +10,7 @@ function App() {
     <div className='App'>
       <NavBar />
       <ThemeProvider theme={darkTheme}>
-        <ItemListCointainer greeting='Here goes your greeting' />
+        <ItemListCointainer />
       </ThemeProvider>
     </div>
   );

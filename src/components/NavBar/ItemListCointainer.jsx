@@ -4,16 +4,13 @@ import ItemCounter from '../ItemDetail/ItemCount';
 import Container from '@mui/material/Container';
 import Box from '@mui/material/Box';
 
-const ItemListCointainer = ({ greeting }) => {
+const ItemListCointainer = () => {
   return (
     <Container maxWidth='sm'>
       <Box display='flex' justifyContent='center'>
-        <ItemCounter />
+        <ItemCounter stock={10} />
       </Box>
     </Container>
-    // <Box  marginTop={2} display='flex' justifyContent='center'>
-    //   <Counter />
-    // </Box>
   );
 };
 
