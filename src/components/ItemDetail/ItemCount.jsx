@@ -10,75 +10,70 @@ import RemoveIcon from '@mui/icons-material/Remove';
 import IconButton from '@mui/material/IconButton';
 import Stack from '@mui/material/Stack';
 import Box from '@mui/system/Box';
+import Button from '@mui/material/Button';
+import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const ItemCounter = ({ stock, initial }) => {
+const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
   const { counter, increment, decrement } = useCounter(initial);
 
+  const handleAddBtn = () => onAdd(counter);
+
   return (
-    <Box
-      display='flex'
-      flexDirection={{ xs: 'column', sm: 'row' }}
-      alignItems='center'>
-      <FormControl
-        sx={{
-          m: 1,
-          width: '11ch',
-        }}
-        variant='outlined'>
-        <OutlinedInput
-          id='outlined-adornment-weight'
-          endAdornment={<InputAdornment position='end'>Un</InputAdornment>}
-          aria-describedby='outlined-weight-helper-text'
-          type='number'
-          inputProps={{
-            'aria-label': 'weight',
-            type: 'number',
-            value: counter,
-            max: 10,
-            min: 1,
-            disabled: 'disabled',
+    <Box>
+      <Box
+        display='flex'
+        flexDirection={{ xs: 'column', sm: 'row' }}
+        alignItems='center'>
+        <FormControl
+          sx={{
+            m: 1,
+            width: '11ch',
           }}
-        />
-        <FormHelperText id='outlined-weight-helper-text'>
-          En stock: {stock}
-        </FormHelperText>
-      </FormControl>
-      <Stack direction={{ xs: 'row', sm: 'column' }}>
-        <IconButton
-          aria-label='addButton'
-          disabled={counter === stock ? true : false}
-          onClick={increment}>
-          <AddIcon />
-        </IconButton>
-        <IconButton
-          aria-label='removeButtom'
-          disabled={counter === 1 ? true : false}
-          onClick={decrement}>
-          <RemoveIcon />
-        </IconButton>
-      </Stack>
+          variant='outlined'>
+          <OutlinedInput
+            id='outlined-adornment-weight'
+            endAdornment={<InputAdornment position='end'>Un</InputAdornment>}
+            aria-describedby='outlined-weight-helper-text'
+            type='number'
+            inputProps={{
+              'aria-label': 'weight',
+              type: 'number',
+              value: counter,
+              max: 10,
+              min: 1,
+              disabled: 'disabled',
+            }}
+          />
+          <FormHelperText id='outlined-weight-helper-text'>
+            En stock: {stock}
+          </FormHelperText>
+        </FormControl>
+        <Stack direction={{ xs: 'row-reverse', sm: 'column' }}>
+          <IconButton
+            aria-label='addButton'
+            disabled={counter === stock ? true : false}
+            onClick={increment}>
+            <AddIcon />
+          </IconButton>
+          <IconButton
+            aria-label='removeButtom'
+            disabled={counter === 1 ? true : false}
+            onClick={decrement}>
+            <RemoveIcon />
+          </IconButton>
+        </Stack>
+      </Box>
+      <Button
+        aria-label='addToCart'
+        variant='outlined'
+        color='inherit'
+        startIcon={<ShoppingCartIcon />}
+        sx={{ mt: 1 }}
+        onClick={handleAddBtn}>
+        Agregar
+      </Button>
     </Box>
   );
 };
 
 export default ItemCounter;
-
-/*
-
-A tener en cuenta:
-- El número contador nunca puede superar el stock disponible 
-- De no haber stock el click no debe tener efecto y por ende no ejecutar el callback onAdd 
-- Si hay stock al clickear el botón se debe ejecutar onAdd con un número que debe ser la cantidad seleccionada por el usuario
-
-- Detalle importante: Como sabes, todavía no tenemos nuestro detalle de ítem y este desarrollo es parte de él, así que por el momento puedes probar e importar este componente dentro del ItemListContainer, sólo a propósitos de prueba. Después lo sacaremos de aquí y lo incluiremos en el detalle del ítem
-Ejemplo inicial: 
-
-function ItemCount({ stock, initial,  onAdd }) {
- // Desarrollar lógica
-}
-
-- Adicionalmente tendremos un número inicial (initial) de cantidad de ítems, de tal modo que si lo invoco del siguiente modo:
-<ItemCount stock=”5” initial=”1” /> 
-debería ver el contador inicializado en 1 por defecto
-
-*/
