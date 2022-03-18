@@ -16,7 +16,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
   const { counter, increment, decrement } = useCounter(initial);
 
-  const handleAddBtn = () => onAdd(counter);
+  const handleAddBtnClick = () => onAdd(counter);
 
   return (
     <Box>
@@ -69,7 +69,7 @@ const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
         color='inherit'
         startIcon={<ShoppingCartIcon />}
         sx={{ mt: 1 }}
-        onClick={handleAddBtn}>
+        onClick={handleAddBtnClick}>
         Agregar
       </Button>
     </Box>
