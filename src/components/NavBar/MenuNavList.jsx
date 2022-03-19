@@ -68,6 +68,7 @@ const MenuNavList = () => {
             sx={{
               my: 2,
               color: '#bdbdbd',
+              '&:active': { color: 'white' },
               '&:hover': { color: 'white' },
               display: 'block',
             }}>
@@ -78,5 +79,23 @@ const MenuNavList = () => {
     </>
   );
 };
+
+/*
+
+TODO : 
+1. Set active class for button links.
+eg:
+  <Button
+  className={classes.button}
+  component={NavLink} (Import NavLink from react-router-dom)
+  to="/page-link"
+>
+
+2. Pass objects to [pages] instead of strings
+ eg:
+
+  pages = [{page: 'desktop', route: '/route?'}]
+
+*/
 
 export default MenuNavList;

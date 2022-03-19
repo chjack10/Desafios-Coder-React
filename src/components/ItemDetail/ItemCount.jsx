@@ -38,26 +38,26 @@ const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
             inputProps={{
               'aria-label': 'weight',
               type: 'number',
-              value: counter,
+              value: stock > 0 && counter,
               max: 10,
               min: 1,
-              disabled: 'disabled',
+              disabled: true,
             }}
           />
           <FormHelperText id='outlined-weight-helper-text'>
-            En stock: {stock}
+            {stock < 1 ? 'Sin stock' : `En stock: ${stock}`}
           </FormHelperText>
         </FormControl>
         <Stack direction={{ xs: 'row-reverse', sm: 'column' }}>
           <IconButton
             aria-label='addButton'
-            disabled={counter === stock ? true : false}
+            disabled={stock < 1 || (counter === stock && true)}
             onClick={increment}>
             <AddIcon />
           </IconButton>
           <IconButton
             aria-label='removeButtom'
-            disabled={counter === 1 ? true : false}
+            disabled={counter < 1 && true}
             onClick={decrement}>
             <RemoveIcon />
           </IconButton>
@@ -69,7 +69,8 @@ const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
         color='inherit'
         startIcon={<ShoppingCartIcon />}
         sx={{ mt: 1 }}
-        onClick={handleAddBtnClick}>
+        onClick={handleAddBtnClick}
+        disabled={stock < 1 || (counter < 1 && true)}>
         Agregar
       </Button>
     </Box>
