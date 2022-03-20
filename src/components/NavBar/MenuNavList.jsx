@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
@@ -65,12 +66,12 @@ const MenuNavList = () => {
           <Button
             key={page}
             onClick={handleCloseNavMenu}
+            component={NavLink}
+            to={'/' + page.toLowerCase()}
             sx={{
-              my: 2,
               color: '#bdbdbd',
-              '&:active': { color: 'white' },
+              '&.active': { color: 'white' },
               '&:hover': { color: 'white' },
-              display: 'block',
             }}>
             {page}
           </Button>
@@ -79,23 +80,5 @@ const MenuNavList = () => {
     </>
   );
 };
-
-/*
-
-TODO : 
-1. Set active class for button links.
-eg:
-  <Button
-  className={classes.button}
-  component={NavLink} (Import NavLink from react-router-dom)
-  to="/page-link"
->
-
-2. Pass objects to [pages] instead of strings
- eg:
-
-  pages = [{page: 'desktop', route: '/route?'}]
-
-*/
 
 export default MenuNavList;
