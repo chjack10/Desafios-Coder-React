@@ -20,7 +20,7 @@ const DashboardRoutes = () => {
           <Route path='notebooks' element={<NotebooksScreen />} />
           <Route path='gadgets' element={<GadgetsScreen />} />
           <Route path='contacto' element={<ContactoScreen />} />
-          {/* <Route path='/detalles/$product' element={<ItemDetailScreen />} /> */}
+          {/* <Route path='/detalles/:itemId' element={<ItemDetailScreen />} /> */}
 
           <Route path='/' element={<HomeScreen />} />
         </Routes>
