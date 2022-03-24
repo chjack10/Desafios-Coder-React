@@ -16,7 +16,7 @@ import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
   const { counter, increment, decrement } = useCounter(initial);
 
-  const handleAddBtnClick = () => onAdd(counter);
+  const handleAddBtnClick = () => onAdd(count);
 
   return (
     <Box>

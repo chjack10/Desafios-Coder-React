@@ -1,6 +1,8 @@
 const data = [
   {
     id: 'desktops-1',
+    category: 'desktops',
+    stock: 5,
     title:
       'PC Gamer Intel Core i3 10100F H510M-E 8GB SSD 240GB GT730 2GB 500W 80+ AUREOX PICTOR',
     description: {
@@ -16,6 +18,8 @@ const data = [
   },
   {
     id: 'desktops-2',
+    category: 'desktops',
+    stock: 5,
     title:
       'PC Gamer AMD Ryzen 5 4650G A520M-A 16GB SSD 480GB 450W 80+ AUREOX VOLANS',
     description: {
@@ -31,6 +35,8 @@ const data = [
   },
   {
     id: 'desktops-3',
+    category: 'desktops',
+    stock: 5,
     title:
       'PC Gamer Ryzen 5 4650G A520M-A 16GB SSD 240GB GTX 1650 4GB 600W 80+ AUREOX PICTOR',
     description: {
@@ -46,6 +52,8 @@ const data = [
   },
   {
     id: 'desktops-4',
+    category: 'desktops',
+    stock: 5,
     title:
       'PC Gamer Intel Core i5 10400F B460M-A 16GB M.2 NVME 500GB DG1 4GB 500W 80+ K20 SUPER',
     description: {
@@ -61,6 +69,8 @@ const data = [
   },
   {
     id: 'notebooks-1',
+    category: 'notebooks',
+    stock: 5,
     title:
       'Notebook Gamer XPG XENIA i7 11va 32GB (2x16) M.2 NVMe 1TB RTX 3070 WINDOWS 10 HOME',
     description: {
@@ -85,6 +95,8 @@ const data = [
   },
   {
     id: 'notebooks-2',
+    category: 'notebooks',
+    stock: 5,
     title:
       'Notebook ThinkPad Lenovo T14S Intel® Core™ i5-10210U 8GB NVME 256GB Win 10',
     description: {
@@ -113,6 +125,8 @@ const data = [
   },
   {
     id: 'notebooks-3',
+    category: 'notebooks',
+    stock: 5,
     title: 'Notebook Lenovo IP3 14" AMD3050U 4gb 256ssd FDOS',
     description: {
       Marca: 'LENOVO',
@@ -129,6 +143,8 @@ const data = [
   },
   {
     id: 'notebooks-4',
+    category: 'notebooks',
+    stock: 5,
     title: 'Notebook 15" Lenovo V15 I3 4GB 1TB freeD',
     description: {
       Procesador: 'Intel Core i3-1005G1 (2C / 4T, 1.2 / 3.4GHz, 4MB)',
@@ -150,6 +166,8 @@ const data = [
   },
   {
     id: 'gadgets-1',
+    category: 'gadgets',
+    stock: 5,
     title: 'AURICULAR CORSAIR HS35 Stereo Gaming Carbon PC/PS4/XBOX',
     description: {
       Cable_Length: '1,8 m',
@@ -159,7 +177,7 @@ const data = [
       Lighting: 'Ninguno',
       Platform: 'PC, PS4, XBOX One, Nintendo Switch, dispositivos móviles',
       Microphone_Impedance: '2000 Ω',
-      Microphone_Type: 'Cancelación de ruido unidireccional',
+      Microphone_category: 'Cancelación de ruido unidireccional',
       Microphone_Frequency: 'Response De 100 Hz a 10 kHz',
       Microphone_Sensitivity: '-38dB (+/-3dB)',
     },
@@ -167,6 +185,8 @@ const data = [
   },
   {
     id: 'gadgets-2',
+    category: 'gadgets',
+    stock: 5,
     title: 'UH400Hub USB 4 puertos 3.0 TP-Link',
     description: {
       Dimensiones: '71 x 71 x 16.6 mm. (2.8 x 2.8 x 0.7 in)',
@@ -180,6 +200,8 @@ const data = [
   },
   {
     id: 'gadgets-3',
+    category: 'gadgets',
+    stock: 5,
     title: 'PARLANTE LOGITECH S150 2.0 USB',
     description: {
       Altura: '6.22 in (158 mm)',
@@ -191,6 +213,8 @@ const data = [
   },
   {
     id: 'gadgets-4',
+    category: 'gadgets',
+    stock: 5,
     title: 'WATER COOLER AZZA BLIZZARD 360MM ARGB',
     description: {
       Marca: 'AZZA',

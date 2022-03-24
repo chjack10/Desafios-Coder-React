@@ -17,28 +17,4 @@ const Logo = () => {
   );
 };
 
-// {
-//   <Avatar
-//     component={Link}
-//     href='/home'
-//     maxHeight={70}
-//     marginRight={2}
-//     src='../../src/assets/img/lanus-logo.svg'
-//     alt='LanusLogo'
-//     loading='lazy'
-//   />;
-// }
-
-{
-  /* <Link href='/home'>
-        <img
-          src='../../src/assets/img/lanus-logo.svg'
-          alt='LanusLogo'
-          loading='lazy'
-          height='70'
-          width='70'
-        />
-</Link> */
-}
-
 export default Logo;

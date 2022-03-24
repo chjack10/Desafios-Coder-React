@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react';
 
-import Grid from '@mui/material/Grid';
 import Item from './Item';
-import CircularProgress from '@mui/material/CircularProgress';
 import data from '../../data/data';
-import Box from '@mui/material/Box';
-import Typography from '@mui/material/Typography';
+import LoadingSpinner from '../ui/LoadingSpinner';
+
+import Grid from '@mui/material/Grid';
 
 const ItemList = () => {
   const [items, setItems] = useState();
@@ -34,10 +33,7 @@ const ItemList = () => {
           ))}
         </Grid>
       ) : (
-        <Box display='flex' flexDirection='column' alignItems='center'>
-          <CircularProgress />
-          <Typography variant='overline'>Cargando...</Typography>
-        </Box>
+        <LoadingSpinner />
       )}
     </>
   );

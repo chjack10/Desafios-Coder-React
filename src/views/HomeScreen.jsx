@@ -1,4 +1,4 @@
-import ItemListCointainer from '../components/NavBar/ItemListCointainer';
+import ItemListCointainer from '../components/Item/ItemListCointainer';
 
 const HomeScreen = () => {
   return <ItemListCointainer />;

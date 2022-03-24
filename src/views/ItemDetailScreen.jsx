@@ -1,4 +1,7 @@
+import ItemDetailContainer from '../components/Item/ItemDetailContainer';
+  
 const ItemDetailScreen = () => {
-  return <div>ItemDetailScreen</div>;
+  return <ItemDetailContainer />;
 };
+
 export default ItemDetailScreen;
