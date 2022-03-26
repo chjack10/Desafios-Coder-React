@@ -1,40 +1,37 @@
-import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 
 import Item from './Item';
-import data from '../../data/data';
-import LoadingSpinner from '../ui/LoadingSpinner';
 
 import Grid from '@mui/material/Grid';
 
-const ItemList = () => {
-  const [items, setItems] = useState();
+const ItemList = ({ items }) => {
+  const screenHeading = () => {
+    const { categoryId } = useParams();
 
-  useEffect(() => {
-    fetchData.then(setItems);
-  }, []);
-
-  const fetchData = new Promise((res) => {
-    setTimeout(() => {
-      res(data);
-    }, 2000);
-  });
+    switch (categoryId) {
+      case 'desktops':
+        return 'Nuestras desktops';
+      case 'notebooks':
+        return 'Nuestras notebooks';
+      case 'gadgets':
+        return 'Nuestros gadgets';
+      default:
+        return 'Todos nuestros productos';
+    }
+  };
 
   return (
     <>
-      <h2>Todos nuestros productos</h2>
+      <h2>{screenHeading()}</h2>
       <hr />
 
-      {items ? (
-        <Grid container spacing={4} py={3}>
-          {items.map((item) => (
-            <Grid item xs={12} sm={6} lg={3}>
-              <Item key={item.id} {...item} />
-            </Grid>
-          ))}
-        </Grid>
-      ) : (
-        <LoadingSpinner />
-      )}
+      <Grid container spacing={4} py={3}>
+        {items?.map((item) => (
+          <Grid item xs={12} sm={6} lg={3}>
+            <Item key={item.id} {...item} />
+          </Grid>
+        ))}
+      </Grid>
     </>
   );
 };

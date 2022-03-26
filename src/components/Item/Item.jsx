@@ -9,7 +9,7 @@ import { Button, CardActionArea, CardActions } from '@mui/material';
 const Item = ({ id, title, price }) => {
   const imgPath = `../../src/assets/img/${id}.jpg`;
   const navigate = useNavigate();
-  const handleNavigation = () => navigate(`/detalles/${id}`);
+  const handleNavigation = () => navigate(`/item/${id}`);
 
   return (
     <Card className='animate__animated animate__fadeIn' raised>

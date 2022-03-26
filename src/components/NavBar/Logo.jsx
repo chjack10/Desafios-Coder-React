@@ -7,7 +7,7 @@ const Logo = () => {
   return (
     <Avatar
       component={Link}
-      to='/home'
+      to='/'
       sx={{ marginRight: 3, height: 64 }}
       src='../../src/assets/img/lanus-logo.svg'
       alt='LanusLogo'

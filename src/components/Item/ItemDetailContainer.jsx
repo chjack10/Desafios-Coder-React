@@ -11,12 +11,12 @@ const ItemDetailContainer = () => {
 
   useEffect(async () => {
     setItem(await fetchItem);
-  }, [item]);
+  }, [itemId]);
 
   const fetchItem = new Promise((res) => {
     setTimeout(() => {
       res(getItemById(itemId));
-    }, 2000);
+    }, 500);
   });
 
   return item ? <ItemDetail {...item} /> : <LoadingSpinner />;

@@ -20,7 +20,8 @@ const MenuNavList = () => {
     setAnchorElNav(null);
   };
 
-  const pages = ['Desktops', 'Notebooks', 'Gadgets', 'Contacto'];
+  const pages = ['Desktops', 'Notebooks', 'Gadgets'];
+  // const pages = ['Desktops', 'Notebooks', 'Gadgets', 'Contacto'];
 
   return (
     <>
@@ -55,7 +56,7 @@ const MenuNavList = () => {
             display: { xs: 'block', md: 'none' },
           }}>
           {pages.map((page) => (
-            <MenuItem key={page} onClick={handleCloseNavMenu}>
+            <MenuItem key={page} onClick={handleCloseNavMenu}  component={NavLink} to={'/category/' + page.toLowerCase()}>
               <Typography textAlign='center'>{page}</Typography>
             </MenuItem>
           ))}
@@ -67,7 +68,7 @@ const MenuNavList = () => {
             key={page}
             onClick={handleCloseNavMenu}
             component={NavLink}
-            to={'/' + page.toLowerCase()}
+            to={'/category/' + page.toLowerCase()}
             sx={{
               color: '#bdbdbd',
               '&.active': { color: 'white' },
