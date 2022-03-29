@@ -5,7 +5,7 @@ import Toolbar from '@mui/material/Toolbar';
 import Container from '@mui/material/Container';
 
 import SearchBar from './SearchBar';
-import CartWidget from './CartWidget';
+import CartWidget from '../Cart/CartWidget';
 import Logo from './Logo';
 import MenuNavList from './MenuNavList';
 import UserLogo from './UserLogo';

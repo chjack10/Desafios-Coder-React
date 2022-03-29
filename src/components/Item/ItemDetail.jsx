@@ -1,4 +1,5 @@
-import { useNavigate } from 'react-router-dom';
+import { useState } from 'react';
+import { useNavigate, Link } from 'react-router-dom';
 
 import ItemDescription from './ItemDescription';
 import ItemCount from './ItemCount';
@@ -11,11 +12,20 @@ import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
+import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
+import SuccessSnackbar from '../ui/SuccessSnackbar';
 
 const ItemDetail = ({ id, title, description, price, stock }) => {
+  const [showItemCount, setShowItemCount] = useState(true);
   const navigate = useNavigate();
   const handleReturn = () => navigate(-1);
   const imgPath = `../../src/assets/img/${id}.jpg`;
+
+  const addToCart = (quantity) => {
+    setShowItemCount(false);
+    const item = { id, title, price, quantity };
+    console.log(item);
+  };
 
   return (
     <>
@@ -23,12 +33,14 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
         container
         mt={5}
         className='animate__animated animate__fadeIn'
-        spacing={3}>
+        spacing={3}
+      >
         <Grid
           item
           sm={6}
           md={4}
-          className='animate__animated animate__fadeInLeft'>
+          className='animate__animated animate__fadeInLeft'
+        >
           <Card raised>
             <CardMedia component='img' image={imgPath} alt={id} />
           </Card>
@@ -36,7 +48,8 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
             display='flex'
             justifyContent='space-between'
             mt={1}
-            alignContent='center'>
+            alignContent='center'
+          >
             <Button startIcon={<ArrowBackIcon />} onClick={handleReturn}>
               Volver
             </Button>
@@ -56,7 +69,22 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
           <Divider sx={{ mb: 2 }} />
 
           <Box display='flex' justifyContent={'center'}>
-            <ItemCount stock={stock} />
+            {showItemCount ? (
+              <ItemCount stock={stock} onAdd={addToCart} />
+            ) : (
+              <>
+                <SuccessSnackbar message={'Producto agregado al carrito'} />
+                <Button
+                  variant='contained'
+                  color='error'
+                  startIcon={<AssignmentTurnedInIcon />}
+                  component={Link}
+                  to='/cart'
+                >
+                  Terminar mi compra
+                </Button>
+              </>
+            )}
           </Box>
         </Grid>
       </Grid>

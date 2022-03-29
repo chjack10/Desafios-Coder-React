@@ -3,12 +3,12 @@ import { useState } from 'react';
 import Snackbar from '@mui/material/Snackbar';
 import Alert from '@mui/material/Alert';
 
-const SuccessSnackbar = () => {
-  const [open, setOpen] = useState(false);
+const SuccessSnackbar = ({ message }) => {
+  const [open, setOpen] = useState(true);
 
-  const handleClick = () => {
-    setOpen(true);
-  };
+  // const handleClick = () => {
+  //   setOpen(true);
+  // };
 
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
@@ -19,9 +19,9 @@ const SuccessSnackbar = () => {
   };
 
   return (
-    <Snackbar open={open} autoHideDuration={2000} onClose={handleClose}>
+    <Snackbar open={open} autoHideDuration={3000} onClose={handleClose}>
       <Alert onClose={handleClose} severity='success' sx={{ width: '100%' }}>
-        Próximamente...
+        {message || 'Acción realizada correctamente'}
       </Alert>
     </Snackbar>
   );

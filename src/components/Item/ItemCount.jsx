@@ -13,23 +13,25 @@ import Box from '@mui/system/Box';
 import Button from '@mui/material/Button';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 
-const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
+const ItemCount = ({ stock = 0, initial = 1, onAdd }) => {
   const { counter, increment, decrement } = useCounter(initial);
 
-  const handleAddBtnClick = () => onAdd(count);
+  const handleAddBtnClick = () => onAdd(counter);
 
   return (
     <Box>
       <Box
         display='flex'
         flexDirection={{ xs: 'column', sm: 'row' }}
-        alignItems='center'>
+        alignItems='center'
+      >
         <FormControl
           sx={{
             m: 1,
             width: '11ch',
           }}
-          variant='outlined'>
+          variant='outlined'
+        >
           <OutlinedInput
             id='outlined-adornment-weight'
             endAdornment={<InputAdornment position='end'>Un</InputAdornment>}
@@ -52,13 +54,15 @@ const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
           <IconButton
             aria-label='addButton'
             disabled={stock < 1 || (counter === stock && true)}
-            onClick={increment}>
+            onClick={increment}
+          >
             <AddIcon />
           </IconButton>
           <IconButton
             aria-label='removeButtom'
             disabled={counter < 1 && true}
-            onClick={decrement}>
+            onClick={decrement}
+          >
             <RemoveIcon />
           </IconButton>
         </Stack>
@@ -70,11 +74,12 @@ const ItemCounter = ({ stock = 0, initial = 1, onAdd }) => {
         startIcon={<ShoppingCartIcon />}
         sx={{ mt: 1 }}
         onClick={handleAddBtnClick}
-        disabled={stock < 1 || (counter < 1 && true)}>
+        disabled={stock < 1 || (counter < 1 && true)}
+      >
         Agregar
       </Button>
     </Box>
   );
 };
 
-export default ItemCounter;
+export default ItemCount;
