@@ -1,16 +1,14 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
 import Badge from '@mui/material/Badge';
 import IconButton from '@mui/material/IconButton';
-import { Tooltip } from '@mui/material';
+import Tooltip from '@mui/material/Tooltip';
 
 const CartWidget = () => {
-  const [cartBadgeNumber, setCartBadgeNumber] = useState(0);
-
-  const handleCartClick = () => {
-    setCartBadgeNumber(cartBadgeNumber + 1);
-  };
+  const { amountOfItemsInCart } = useContext(CartContext);
 
   return (
     <Tooltip title='Ver carrito'>
@@ -19,8 +17,10 @@ const CartWidget = () => {
         aria-label='carrito'
         size='large'
         color='inherit'
-        onClick={handleCartClick}>
-        <Badge badgeContent={cartBadgeNumber} color='error'>
+        component={Link}
+        to='/cart'
+      >
+        <Badge badgeContent={amountOfItemsInCart()} color='error'>
           <ShoppingCartIcon sx={{ fontSize: 30 }} />
         </Badge>
       </IconButton>

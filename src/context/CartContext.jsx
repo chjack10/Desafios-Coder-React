@@ -1,0 +1,42 @@
+import { useState, createContext } from 'react';
+
+export const CartContext = createContext();
+
+export const CartProvider = ({ children }) => {
+  const [cart, setCart] = useState([]);
+
+  //cart methods
+
+  const addItemToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  const removeItemFromCart = (item) =>
+    setCart(cart.filter((cartItem) => cartItem.id !== item.id));
+
+  const isInCart = (itemId) => cart.some((cartItem) => cartItem.id === itemId);
+
+  const amountOfItemsInCart = () =>
+    cart.reduce((acc, item) => (acc += item.quantity), 0);
+
+  const totalCartPrice = () =>
+    cart.reduce((acc, item) => (acc += item.price * item.quantity), 0);
+
+  const resetCart = () => setCart([]);
+
+  return (
+    <CartContext.Provider
+      value={{
+        cart,
+        addItemToCart,
+        removeItemFromCart,
+        isInCart,
+        amountOfItemsInCart,
+        totalCartPrice,
+        resetCart,
+      }}
+    >
+      {children}
+    </CartContext.Provider>
+  );
+};

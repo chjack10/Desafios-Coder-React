@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import { useContext, useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 
+import { CartContext } from '../../context/CartContext';
 import ItemDescription from './ItemDescription';
 import ItemCount from './ItemCount';
 
@@ -16,15 +17,17 @@ import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
 import SuccessSnackbar from '../ui/SuccessSnackbar';
 
 const ItemDetail = ({ id, title, description, price, stock }) => {
-  const [showItemCount, setShowItemCount] = useState(true);
   const navigate = useNavigate();
+  const { addItemToCart, isInCart } = useContext(CartContext);
+  const [showSuccessBar, setShowSuccessBar] = useState(false);
   const handleReturn = () => navigate(-1);
   const imgPath = `../../src/assets/img/${id}.jpg`;
 
-  const addToCart = (quantity) => {
-    setShowItemCount(false);
-    const item = { id, title, price, quantity };
-    console.log(item);
+  const handleAddItemToCart = (quantity) => {
+    if (isInCart(id) || quantity === 0) return;
+
+    addItemToCart({ id, title, price, quantity });
+    setShowSuccessBar(true);
   };
 
   return (
@@ -68,26 +71,26 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
           <ItemDescription characteristics={description} />
           <Divider sx={{ mb: 2 }} />
 
-          <Box display='flex' justifyContent={'center'}>
-            {showItemCount ? (
-              <ItemCount stock={stock} onAdd={addToCart} />
+          <Box display='flex' justifyContent={'center'} my>
+            {isInCart(id) ? (
+              <Button
+                variant='contained'
+                color='error'
+                startIcon={<AssignmentTurnedInIcon />}
+                component={Link}
+                to='/cart'
+              >
+                Terminar mi compra
+              </Button>
             ) : (
-              <>
-                <SuccessSnackbar message={'Producto agregado al carrito'} />
-                <Button
-                  variant='contained'
-                  color='error'
-                  startIcon={<AssignmentTurnedInIcon />}
-                  component={Link}
-                  to='/cart'
-                >
-                  Terminar mi compra
-                </Button>
-              </>
+              <ItemCount stock={stock} onAdd={handleAddItemToCart} />
             )}
           </Box>
         </Grid>
       </Grid>
+      {showSuccessBar && (
+        <SuccessSnackbar message={'Producto agregado al carrito'} />
+      )}
     </>
   );
 };

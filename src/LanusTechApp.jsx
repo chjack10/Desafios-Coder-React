@@ -1,18 +1,17 @@
 import AppRouter from './routers/AppRouter';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+import ThemeContext from '../src/context/ThemeContext';
+import { CartProvider } from '../src/context/CartContext';
 
 import './App.css';
 
-const LanusTechApp = () => {
-  const darkTheme = createTheme({ palette: { mode: 'dark' } });
-
-  return (
-    <div className='App'>
-      <ThemeProvider theme={darkTheme}>
+const LanusTechApp = () => (
+  <div className='App'>
+    <CartProvider>
+      <ThemeContext dark>
         <AppRouter />
-      </ThemeProvider>
-    </div>
-  );
-};
+      </ThemeContext>
+    </CartProvider>
+  </div>
+);
 
 export default LanusTechApp;
