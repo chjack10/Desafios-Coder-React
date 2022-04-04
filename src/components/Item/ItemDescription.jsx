@@ -8,14 +8,14 @@ const ItemDescription = ({ characteristics }) => (
   <Paper elevation={8} sx={{ my: 3 }}>
     <List>
       {Object.entries(characteristics).map(([key, value], index) => (
-        <div key={index}>
-          <ListItem>
+        <>
+          <ListItem key={index}>
             <Typography variant='caption' component='p'>
               <strong>{key}:</strong> {value.toLowerCase()}
             </Typography>
           </ListItem>
           <Divider variant={'middle'} />
-        </div>
+        </>
       ))}
     </List>
   </Paper>

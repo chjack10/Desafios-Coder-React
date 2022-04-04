@@ -1,9 +1,12 @@
 import { useContext, useState } from 'react';
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { CartContext } from '../../context/CartContext';
 import ItemDescription from './ItemDescription';
 import ItemCount from './ItemCount';
+
+import SuccessSnackbar from '../ui/SuccessSnackbar';
+import GoBackBtn from '../ui/GoBackBtn';
 
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
@@ -14,13 +17,10 @@ import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
 import Box from '@mui/material/Box';
 import AssignmentTurnedInIcon from '@mui/icons-material/AssignmentTurnedIn';
-import SuccessSnackbar from '../ui/SuccessSnackbar';
 
 const ItemDetail = ({ id, title, description, price, stock }) => {
-  const navigate = useNavigate();
   const { addItemToCart, isInCart } = useContext(CartContext);
   const [showSuccessBar, setShowSuccessBar] = useState(false);
-  const handleReturn = () => navigate(-1);
   const imgPath = `../../src/assets/img/${id}.jpg`;
 
   const handleAddItemToCart = (quantity) => {
@@ -53,9 +53,8 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
             mt={1}
             alignContent='center'
           >
-            <Button startIcon={<ArrowBackIcon />} onClick={handleReturn}>
-              Volver
-            </Button>
+            <GoBackBtn />
+
             <Typography component='h5' variant='h6' textAlign='center'>
               ${price}
             </Typography>

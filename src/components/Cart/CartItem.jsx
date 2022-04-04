@@ -2,41 +2,46 @@ import { Typography } from '@mui/material';
 import Grid from '@mui/material/Grid';
 import FormHelperText from '@mui/material/FormHelperText';
 import Box from '@mui/material/Box';
-import RemoveCircleOutlineIcon from '@mui/icons-material/RemoveCircleOutline';
+import IconButton from '@mui/material/IconButton';
+import Tooltip from '@mui/material/Tooltip';
+import CloseIcon from '@mui/icons-material/Close';
 
-const CartItem = ({ id, title, price, quantity }) => {
-  const imgPath = '../../src/assets/img/id.jpg';
+const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
+  const imgPath = `../../src/assets/img/${id}.jpg`;
+  const handleRemoveItem = () => removeItemFromCart(id);
 
   return (
     <>
-      <Grid container>
-        <Grid item sm='3'>
-          <img
-            src='../../src/assets/img/desktops-1.jpg'
-            alt='imagen'
-            height='150'
-            width='150'
-          />
-        </Grid>
-
+      <Grid container gap>
         <Grid
           item
-          sm='2'
+          xs='12'
+          md='2'
           display='grid'
           textAlign='center'
           justifyContent='center'
           alignContent='center'
         >
-          <Typography variant='inherit'>
-            {
-              'PC Gamer Intel Core i3 10100F H510M-E 8GB SSD 240GB GT730 2GB 500W 80+ AUREOX PICTOR'
-            }
-          </Typography>
+          <img src={imgPath} alt={id} height='150' width='150' />
         </Grid>
 
         <Grid
           item
-          sm='2'
+          xs='12'
+          md='2'
+          display='grid'
+          textAlign='center'
+          justifyContent='center'
+          alignContent='center'
+        >
+          <Typography variant='inherit'>{title}</Typography>
+        </Grid>
+
+        <Grid
+          item
+          xs='12'
+          sm='3'
+          md='2'
           display='grid'
           textAlign='center'
           justifyContent='center'
@@ -44,46 +49,59 @@ const CartItem = ({ id, title, price, quantity }) => {
         >
           <Box>
             <FormHelperText>Precio unitario</FormHelperText>
-            <Typography variant='inherit'>{'$' + 10000.0}</Typography>
+            <Typography variant='inherit'>{'$' + price}</Typography>
           </Box>
         </Grid>
 
         <Grid
           item
-          sm='2'
+          xs='12'
+          sm='3'
+          md='2'
           display='grid'
           textAlign='center'
           justifyContent='center'
           alignContent='center'
         >
           <FormHelperText>Cantidad </FormHelperText>
-          <Typography variant='inherit'>{12}</Typography>
+          <Typography variant='inherit'>{quantity}</Typography>
         </Grid>
 
         <Grid
           item
-          sm='2'
+          xs='12'
+          sm='3'
+          md='2'
           display='grid'
           textAlign='center'
           justifyContent='center'
           alignContent='center'
         >
           <FormHelperText>Subtotal </FormHelperText>
-          <Typography variant='inherit'>{'$' + 13000.0}</Typography>
+          <Typography variant='inherit'>
+            {'$' + (price * quantity).toFixed(2)}
+          </Typography>
         </Grid>
 
         <Grid
           item
-          sm='1'
+          xs='12'
+          sm='2'
+          md='1'
           display='grid'
           textAlign='center'
           justifyContent='center'
           alignContent='center'
         >
-          <RemoveCircleOutlineIcon />
+          <Tooltip title='Eliminar' placement='top'>
+            <IconButton color='error' onClick={handleRemoveItem}>
+              <CloseIcon />
+            </IconButton>
+          </Tooltip>
         </Grid>
       </Grid>
     </>
   );
 };
+
 export default CartItem;

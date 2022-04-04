@@ -1,4 +1,4 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
@@ -9,8 +9,13 @@ import Tooltip from '@mui/material/Tooltip';
 
 const CartWidget = () => {
   const { amountOfItemsInCart } = useContext(CartContext);
+  const [amount, setAmount] = useState(amountOfItemsInCart);
 
-  return (
+  useEffect(() => {
+    setAmount(amountOfItemsInCart);
+  }, [amountOfItemsInCart]);
+
+  return amount > 0 ? (
     <Tooltip title='Ver carrito'>
       <IconButton
         sx={{ mx: 1 }}
@@ -25,7 +30,7 @@ const CartWidget = () => {
         </Badge>
       </IconButton>
     </Tooltip>
-  );
+  ) : null;
 };
 
 export default CartWidget;
