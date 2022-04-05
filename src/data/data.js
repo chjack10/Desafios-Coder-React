@@ -2,7 +2,7 @@ const data = [
   {
     id: 'desktops-1',
     category: 'desktops',
-    stock: 5,
+    stock: 0,
     title:
       'PC Gamer Intel Core i3 10100F H510M-E 8GB SSD 240GB GT730 2GB 500W 80+ AUREOX PICTOR',
     description: {

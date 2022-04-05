@@ -11,7 +11,6 @@ import GoBackBtn from '../ui/GoBackBtn';
 import Grid from '@mui/material/Grid';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import Divider from '@mui/material/Divider';
@@ -81,8 +80,12 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
               >
                 Terminar mi compra
               </Button>
-            ) : (
+            ) : stock > 0 ? (
               <ItemCount stock={stock} onAdd={handleAddItemToCart} />
+            ) : (
+              <Typography variant='h6' color='textSecondary'>
+                Sin stock
+              </Typography>
             )}
           </Box>
         </Grid>

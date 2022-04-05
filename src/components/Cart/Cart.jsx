@@ -1,11 +1,17 @@
 import { useContext } from 'react';
 import { CartContext } from '../../context/CartContext';
+import { Link } from 'react-router-dom';
 
 import CartItem from './CartItem';
 import EmptyCart from './EmptyCart';
 
-import { Container, Typography } from '@mui/material';
-import { Divider } from '@mui/material';
+import Box from '@mui/material/Box';
+import Container from '@mui/material/Container';
+import Divider from '@mui/material/Divider';
+import Typography from '@mui/material/Typography';
+import Button from '@mui/material/Button';
+
+import PointOfSaleIcon from '@mui/icons-material/PointOfSale';
 import GoBackBtn from '../ui/GoBackBtn';
 
 const Cart = () => {
@@ -39,6 +45,19 @@ const Cart = () => {
           >
             Total: {'$' + totalCartPrice().toFixed(2)}
           </Typography>
+
+          <Box display='flex' gap justifyContent={'center'} my>
+            <Button
+              variant='contained'
+              color='primary'
+              component={Link}
+              to='/checkout'
+              startIcon={<PointOfSaleIcon />}
+            >
+              Proceder al pago
+            </Button>
+          </Box>
+
           <GoBackBtn />
         </>
       ) : (

@@ -60,13 +60,14 @@ const ItemCount = ({ stock = 0, initial = 1, onAdd }) => {
           </IconButton>
           <IconButton
             aria-label='removeButtom'
-            disabled={counter < 1 && true}
+            disabled={counter < 1 || (stock < 1 && true)}
             onClick={decrement}
           >
             <RemoveIcon />
           </IconButton>
         </Stack>
       </Box>
+
       <Button
         aria-label='addToCart'
         variant='outlined'
