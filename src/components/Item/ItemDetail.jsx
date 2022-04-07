@@ -21,7 +21,6 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
   const { addItemToCart, isInCart } = useContext(CartContext);
   const [showSuccessBar, setShowSuccessBar] = useState(false);
   const imgPath = `../../src/assets/img/${id}.jpg`;
-
   const handleAddItemToCart = (quantity) => {
     if (isInCart(id) || quantity === 0) return;
 

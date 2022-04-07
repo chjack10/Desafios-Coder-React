@@ -9,13 +9,8 @@ import Tooltip from '@mui/material/Tooltip';
 
 const CartWidget = () => {
   const { amountOfItemsInCart } = useContext(CartContext);
-  const [amount, setAmount] = useState(amountOfItemsInCart);
 
-  useEffect(() => {
-    setAmount(amountOfItemsInCart);
-  }, [amountOfItemsInCart]);
-
-  return amount > 0 ? (
+  return amountOfItemsInCart() > 0 ? (
     <Tooltip title='Ver carrito'>
       <IconButton
         sx={{ mx: 1 }}

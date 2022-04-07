@@ -1,4 +1,5 @@
 import { useState } from 'react';
+// import { useForm } from '../../hooks/useForm';
 
 import getStepContent from '../../helpers/getStepContent';
 
@@ -15,6 +16,13 @@ const steps = ['Dirección de envío', 'Detalles del pago', 'Chequeo de datos'];
 
 export default function Checkout() {
   const [activeStep, setActiveStep] = useState(0);
+  const { handleChange, values, errors } = useForm({
+    firstName: '',
+    lastName: '',
+    email: '',
+    address1: '',
+    city: '',
+  });
 
   const handleNext = () => {
     setActiveStep(activeStep + 1);
@@ -26,9 +34,13 @@ export default function Checkout() {
 
   return (
     <>
-      <Container component='main' maxWidth='sm' sx={{ mb: 4 }}>
+      <Container
+        component='main'
+        maxWidth='sm'
+        className='animate__animated animate__fadeIn'
+      >
         <Paper
-          sx={{ my: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
+          sx={{ mt: { xs: 3, md: 6 }, p: { xs: 2, md: 3 } }}
           elevation={12}
         >
           <Typography component='h1' variant='h4' align='center'>

@@ -1,6 +1,6 @@
 import AddressForm from '../components/Checkout/AddressForm';
 import PaymentForm from '../components/Checkout/PaymentForm';
-import Review from '../components/Checkout/PaymentForm';
+import Review from '../components/Checkout/Review';
 
 export default function getStepContent(step) {
   switch (step) {
