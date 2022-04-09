@@ -3,27 +3,30 @@ import { useState, useEffect } from 'react';
 const useForm = (callback, validate) => {
   const [values, setValues] = useState({
     name: '',
-    surname: '',
+    lastName: '',
     email: '',
-    adress: '',
+    address: '',
     city: '',
     state: '',
-    postalCode: '',
+    zip: '',
     phoneNumber: '',
-    card: { number: '', name: '', expiry: '', cvc: '' },
+    cardNumber: '',
+    cardName: '',
+    cardExpiry: '',
+    cardCvc: '',
   });
   const [errors, setErrors] = useState({});
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
-    const { name, value } = e.target;
+  const handleChange = ({ target }) => {
+    const { name, value } = target;
     setValues({
       ...values,
       [name]: value,
     });
   };
 
-  const handleSubmit = (e) => {
+  const handleSubmit = () => {
     e.preventDefault();
 
     setErrors(validate(values));

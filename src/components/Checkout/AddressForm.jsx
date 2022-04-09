@@ -1,39 +1,48 @@
 import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import TextField from '@mui/material/TextField';
+import { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
-export default function AddressForm() {
+const AddressForm = () => {
+  const { userData, handleChange, errors } = useContext(UserContext);
+
   return (
     <>
       <Typography variant='h6' gutterBottom>
         Datos de envío
       </Typography>
-      <Grid container spacing={3}>
+      <Grid container spacing={3} className='animate__animated animate__fadeIn'>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
-            id='firstName'
-            name='firstName'
+            id='name'
+            name='name'
             label='Nombre'
             fullWidth
             autoComplete='given-name'
             variant='standard'
+            value={userData.name || ''}
+            onChange={handleChange}
+            error={!!errors.name}
+            helperText={errors.name || ''}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='lastName'
             name='lastName'
             label='Apellido'
             fullWidth
             autoComplete='family-name'
             variant='standard'
+            value={userData.lastName || ''}
+            error={!!errors.lastName}
+            helperText={errors.lastName || ''}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            required
             type='email'
             id='email'
             name='email'
@@ -41,43 +50,55 @@ export default function AddressForm() {
             fullWidth
             autoComplete='e-mail'
             variant='standard'
+            value={userData.email || ''}
+            error={!!errors.email}
+            helperText={errors.email || ''}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12}>
           <TextField
-            required
-            id='address1'
-            name='address1'
-            label='Dirección 1'
+            id='address'
+            name='address'
+            label='Dirección'
             fullWidth
-            autoComplete='shipping address-line1'
+            autoComplete='shipping address-line'
             variant='standard'
+            value={userData.address || ''}
+            error={!!errors.address}
+            helperText={errors.address || ''}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='city'
             name='city'
             label='Ciudad'
             fullWidth
             autoComplete='shipping address-level2'
             variant='standard'
+            value={userData.city || ''}
+            error={!!errors.city}
+            helperText={errors.city || ''}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             id='state'
             name='state'
             label='Estado/Provincia/Region'
             fullWidth
             variant='standard'
+            value={userData.state || ''}
+            error={!!errors.state}
+            helperText={errors.state || ''}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
             type='number'
             id='zip'
             name='zip'
@@ -85,21 +106,30 @@ export default function AddressForm() {
             fullWidth
             autoComplete='shipping postal-code'
             variant='standard'
+            value={userData.zip || ''}
+            error={!!errors.zip}
+            helperText={errors.zip || ''}
+            onChange={handleChange}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
           <TextField
-            required
-            type='tel'
+            type='number'
             id='phoneNumber'
             name='phoneNumber'
             label='Número de teléfono'
             fullWidth
             autoComplete='Phone number'
             variant='standard'
+            value={userData.phoneNumber || ''}
+            error={!!errors.phoneNumber}
+            helperText={errors.phoneNumber || ''}
+            onChange={handleChange}
           />
         </Grid>
       </Grid>
     </>
   );
-}
+};
+
+export default AddressForm;

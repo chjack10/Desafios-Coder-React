@@ -1,5 +1,5 @@
-import { useState } from 'react';
-// import { useForm } from '../../hooks/useForm';
+import { useState, useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 
 import getStepContent from '../../helpers/getStepContent';
 
@@ -11,24 +11,28 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
+import validateAddressForm from '../../helpers/validateAddressForm';
+import validatePaymentForm from '../../helpers/validatePaymentForm';
 
 const steps = ['Dirección de envío', 'Detalles del pago', 'Chequeo de datos'];
 
-export default function Checkout() {
+const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const { handleChange, values, errors } = useForm({
-    firstName: '',
-    lastName: '',
-    email: '',
-    address1: '',
-    city: '',
-  });
+  const { userData, errors, setErrors } = useContext(UserContext);
+  console.log('errores:', errors);
+  console.log('userData:', userData);
 
   const handleNext = () => {
-    setActiveStep(activeStep + 1);
+    const formIsValid =
+      activeStep === 0
+        ? validateAddressForm(userData, setErrors)
+        : validatePaymentForm(userData, setErrors);
+
+    formIsValid && setActiveStep(activeStep + 1);
   };
 
   const handleBack = () => {
+    setErrors({});
     setActiveStep(activeStep - 1);
   };
 
@@ -92,4 +96,6 @@ export default function Checkout() {
       </Container>
     </>
   );
-}
+};
+
+export default Checkout;

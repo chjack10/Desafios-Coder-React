@@ -1,4 +1,6 @@
-import { Fragment } from 'react';
+import { useContext, Fragment } from 'react';
+import { UserContext } from '../../context/UserContext';
+import { CartContext } from '../../context/CartContext';
 
 import Typography from '@mui/material/Typography';
 import List from '@mui/material/List';
@@ -38,7 +40,10 @@ const payments = [
   { name: 'Expiry date', detail: '04/2024' },
 ];
 
-export default function Review() {
+const Review = () => {
+  const { userData } = useContext(UserContext);
+  const { cart } = useContext(CartContext);
+  //todo: Add cart context
   return (
     <>
       <Typography variant='h6' gutterBottom>
@@ -87,4 +92,6 @@ export default function Review() {
       </Grid>
     </>
   );
-}
+};
+
+export default Review;
