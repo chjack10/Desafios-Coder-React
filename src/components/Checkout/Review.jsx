@@ -1,4 +1,4 @@
-import { useContext, Fragment } from 'react';
+import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext';
 import { CartContext } from '../../context/CartContext';
 
@@ -8,59 +8,43 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 
-const products = [
-  {
-    name: 'Product 1',
-    desc: 'A nice thing',
-    price: '$9.99',
-  },
-  {
-    name: 'Product 2',
-    desc: 'Another thing',
-    price: '$3.45',
-  },
-  {
-    name: 'Product 3',
-    desc: 'Something else',
-    price: '$6.51',
-  },
-  {
-    name: 'Product 4',
-    desc: 'Best thing of all',
-    price: '$14.11',
-  },
-  { name: 'Shipping', desc: '', price: 'Free' },
-];
-
-const addresses = ['1 MUI Drive', 'Reactville', 'Anytown', '99999', 'USA'];
-const payments = [
-  { name: 'Card type', detail: 'Visa' },
-  { name: 'Card holder', detail: 'Mr John Smith' },
-  { name: 'Card number', detail: 'xxxx-xxxx-xxxx-1234' },
-  { name: 'Expiry date', detail: '04/2024' },
-];
-
 const Review = () => {
-  const { userData } = useContext(UserContext);
-  const { cart } = useContext(CartContext);
-  //todo: Add cart context
+  const {
+    userData: {
+      cardNumber,
+      cardExpDate,
+      cardName,
+      address,
+      name,
+      lastName,
+      state,
+      city,
+    },
+  } = useContext(UserContext);
+
+  const { cart, totalCartPrice } = useContext(CartContext);
   return (
     <>
       <Typography variant='h6' gutterBottom>
         Resumen de compra
       </Typography>
       <List disablePadding>
-        {products.map((product) => (
-          <ListItem key={product.name} sx={{ py: 1, px: 0 }}>
-            <ListItemText primary={product.name} secondary={product.desc} />
-            <Typography variant='body2'>{product.price}</Typography>
+        {cart.map((item) => (
+          <ListItem key={item.name} sx={{ py: 1, px: 0 }}>
+            <ListItemText
+              primary={item.title}
+              secondary={`Cantidad: ${item.quantity}`}
+            />
+            <Typography variant='body2'>
+              {item.price * item.quantity}
+            </Typography>
           </ListItem>
         ))}
 
         <ListItem sx={{ py: 1, px: 0 }}>
           <ListItemText primary='Total' />
           <Typography variant='subtitle1' sx={{ fontWeight: 700 }}>
-            $34.06
+            {`${totalCartPrice()}`}
           </Typography>
         </ListItem>
       </List>
@@ -69,24 +53,36 @@ const Review = () => {
           <Typography variant='h6' gutterBottom sx={{ mt: 2 }}>
             Envío
           </Typography>
-          <Typography gutterBottom>John Smith</Typography>
-          <Typography gutterBottom>{addresses.join(', ')}</Typography>
+          <Typography gutterBottom>{name + ' ' + lastName}</Typography>
+          <Typography gutterBottom>
+            {[address, state, city].join(', ')}
+          </Typography>
         </Grid>
         <Grid item container direction='column' xs={12} sm={6}>
           <Typography variant='h6' gutterBottom sx={{ mt: 2 }}>
             Pago
           </Typography>
           <Grid container>
-            {payments.map((payment) => (
-              <Fragment key={payment.name}>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.name}</Typography>
-                </Grid>
-                <Grid item xs={6}>
-                  <Typography gutterBottom>{payment.detail}</Typography>
-                </Grid>
-              </Fragment>
-            ))}
+            <Grid item xs={6}>
+              <Typography gutterBottom>Titular tarjeta</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>{cardName}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Número tarjeta</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>{`xxxx-xxxx-xxxx-${cardNumber?.slice(
+                -4
+              )}`}</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>Vencimiento</Typography>
+            </Grid>
+            <Grid item xs={6}>
+              <Typography gutterBottom>{cardExpDate}</Typography>
+            </Grid>
           </Grid>
         </Grid>
       </Grid>

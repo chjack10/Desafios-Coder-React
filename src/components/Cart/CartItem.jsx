@@ -4,7 +4,7 @@ import FormHelperText from '@mui/material/FormHelperText';
 import Box from '@mui/material/Box';
 import IconButton from '@mui/material/IconButton';
 import Tooltip from '@mui/material/Tooltip';
-import CloseIcon from '@mui/icons-material/Close';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
   const imgPath = `../../src/assets/img/${id}.jpg`;
@@ -94,8 +94,8 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
           alignContent='center'
         >
           <Tooltip title='Eliminar' placement='top'>
-            <IconButton color='error' onClick={handleRemoveItem}>
-              <CloseIcon />
+            <IconButton onClick={handleRemoveItem}>
+              <DeleteIcon />
             </IconButton>
           </Tooltip>
         </Grid>

@@ -31,11 +31,13 @@ export default function validatePaymentForm(values, setError) {
 
   if (!values.cardCvv) {
     errors.cardCvv = 'Pin requerido';
-  } else if (values.cardCvv?.length < 3 || values.cardCvv?.length > 4) {
+  } else if (values.cardCvv?.length !== 3) {
     errors.cardCvv = 'El pin debe ser de 3 dígitos';
   } else if (!/^[0-9]*$/i.test(values.cardCvv)) {
     errors.cardCvv = 'El pin no es válido';
   }
 
   setError(errors);
+
+  return Object.keys(errors).length === 0 ? true : false;
 }

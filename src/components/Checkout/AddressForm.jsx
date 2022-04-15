@@ -21,10 +21,10 @@ const AddressForm = () => {
             fullWidth
             autoComplete='given-name'
             variant='standard'
-            value={userData.name || ''}
+            value={userData.name}
             onChange={handleChange}
             error={!!errors.name}
-            helperText={errors.name || ''}
+            helperText={errors.name}
           />
         </Grid>
         <Grid item xs={12} sm={6}>
@@ -35,9 +35,9 @@ const AddressForm = () => {
             fullWidth
             autoComplete='family-name'
             variant='standard'
-            value={userData.lastName || ''}
+            value={userData.lastName}
             error={!!errors.lastName}
-            helperText={errors.lastName || ''}
+            helperText={errors.lastName}
             onChange={handleChange}
           />
         </Grid>
@@ -50,9 +50,9 @@ const AddressForm = () => {
             fullWidth
             autoComplete='e-mail'
             variant='standard'
-            value={userData.email || ''}
+            value={userData.email}
             error={!!errors.email}
-            helperText={errors.email || ''}
+            helperText={errors.email}
             onChange={handleChange}
           />
         </Grid>
@@ -64,9 +64,9 @@ const AddressForm = () => {
             fullWidth
             autoComplete='shipping address-line'
             variant='standard'
-            value={userData.address || ''}
+            value={userData.address}
             error={!!errors.address}
-            helperText={errors.address || ''}
+            helperText={errors.address}
             onChange={handleChange}
           />
         </Grid>
@@ -78,9 +78,9 @@ const AddressForm = () => {
             fullWidth
             autoComplete='shipping address-level2'
             variant='standard'
-            value={userData.city || ''}
+            value={userData.city}
             error={!!errors.city}
-            helperText={errors.city || ''}
+            helperText={errors.city}
             onChange={handleChange}
           />
         </Grid>
@@ -91,9 +91,9 @@ const AddressForm = () => {
             label='Estado/Provincia/Region'
             fullWidth
             variant='standard'
-            value={userData.state || ''}
+            value={userData.state}
             error={!!errors.state}
-            helperText={errors.state || ''}
+            helperText={errors.state}
             onChange={handleChange}
           />
         </Grid>
@@ -106,9 +106,9 @@ const AddressForm = () => {
             fullWidth
             autoComplete='shipping postal-code'
             variant='standard'
-            value={userData.zip || ''}
+            value={userData.zip}
             error={!!errors.zip}
-            helperText={errors.zip || ''}
+            helperText={errors.zip}
             onChange={handleChange}
           />
         </Grid>
@@ -121,9 +121,9 @@ const AddressForm = () => {
             fullWidth
             autoComplete='Phone number'
             variant='standard'
-            value={userData.phoneNumber || ''}
+            value={userData.phoneNumber}
             error={!!errors.phoneNumber}
-            helperText={errors.phoneNumber || ''}
+            helperText={errors.phoneNumber}
             onChange={handleChange}
           />
         </Grid>

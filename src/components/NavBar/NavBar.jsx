@@ -8,15 +8,17 @@ import SearchBar from './SearchBar';
 import CartWidget from '../Cart/CartWidget';
 import Logo from './Logo';
 import MenuNavList from './MenuNavList';
-import UserLogo from './UserLogo';
+
 import ThemeContext from '../../context/ThemeContext';
 
 const NavBar = () => {
   const pages = ['Desktops', 'Notebooks', 'Gadgets'];
 
+//#91002e
+
   return (
     <ThemeContext>
-      <AppBar position='static' sx={{ bgcolor: '#84022e' }}>
+      <AppBar position='static' sx={{ bgcolor: '#91002e' }}>
         <Container maxWidth='xl'>
           <Toolbar disableGutters>
             <Logo />
@@ -25,7 +27,7 @@ const NavBar = () => {
               <SearchBar />
             </Container>
             <CartWidget />
-            <UserLogo />
+           
           </Toolbar>
         </Container>
       </AppBar>

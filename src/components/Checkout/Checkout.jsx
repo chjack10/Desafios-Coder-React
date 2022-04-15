@@ -1,7 +1,13 @@
 import { useState, useContext } from 'react';
+import { Navigate } from 'react-router-dom';
+
 import { UserContext } from '../../context/UserContext';
+import { CartContext } from '../../context/CartContext';
 
 import getStepContent from '../../helpers/getStepContent';
+import validateAddressForm from '../../helpers/validateAddressForm';
+import validatePaymentForm from '../../helpers/validatePaymentForm';
+import DispatchCheckout from './DispatchCheckout';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -11,24 +17,29 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import validateAddressForm from '../../helpers/validateAddressForm';
-import validatePaymentForm from '../../helpers/validatePaymentForm';
 
 const steps = ['Dirección de envío', 'Detalles del pago', 'Chequeo de datos'];
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const { userData, errors, setErrors } = useContext(UserContext);
-  console.log('errores:', errors);
-  console.log('userData:', userData);
+  const { userData, errors, setErrors, resetUserData } =
+    useContext(UserContext);
+  const { cart, resetCart, totalCartPrice, amountOfItemsInCart } =
+    useContext(CartContext);
+
+  if (amountOfItemsInCart() === 0 && activeStep !== steps.length) {
+    return <Navigate to='/' />;
+  }
 
   const handleNext = () => {
-    const formIsValid =
-      activeStep === 0
-        ? validateAddressForm(userData, setErrors)
-        : validatePaymentForm(userData, setErrors);
-
-    formIsValid && setActiveStep(activeStep + 1);
+    //! COMENTADO PARA QUE VAYA AL SIGUIENTE PASO SIN VALIDAR
+    // const formIsValid =
+    //   activeStep === 0
+    //     ? validateAddressForm(userData, setErrors)
+    //     : validatePaymentForm(userData, setErrors);
+    // formIsValid && setActiveStep(activeStep + 1);
+    // if (formIsValid) setActiveStep(activeStep + 1);
+    setActiveStep(activeStep + 1);
   };
 
   const handleBack = () => {
@@ -50,7 +61,11 @@ const Checkout = () => {
           <Typography component='h1' variant='h4' align='center'>
             Checkout
           </Typography>
-          <Stepper activeStep={activeStep} sx={{ pt: 3, pb: 5 }}>
+
+          <Stepper
+            activeStep={activeStep}
+            sx={{ pt: 3, pb: 5, display: { xs: 'none', sm: 'flex' } }}
+          >
             {steps.map((label) => (
               <Step key={label}>
                 <StepLabel>{label}</StepLabel>
@@ -59,16 +74,13 @@ const Checkout = () => {
           </Stepper>
           <>
             {activeStep === steps.length ? (
-              <>
-                <Typography variant='h5' gutterBottom>
-                  Muchas gracias por tu compra!
-                </Typography>
-                <Typography variant='subtitle1'>
-                  Tu número de compra es #2001539. Enviamos un email a tu correo
-                  con los detalles de tu compra y estaremos en contacto con vos
-                  para seguir el estado de tu pedido.
-                </Typography>
-              </>
+              <DispatchCheckout
+                userData={userData}
+                resetUserData={resetUserData}
+                cart={cart}
+                resetCart={resetCart}
+                totalCartPrice={totalCartPrice}
+              />
             ) : (
               <>
                 {getStepContent(activeStep)}

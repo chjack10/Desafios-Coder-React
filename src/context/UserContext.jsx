@@ -1,4 +1,4 @@
-import { useState, createContext, useEffect } from 'react';
+import { useState, createContext, } from 'react';
 
 export const UserContext = createContext();
 
@@ -18,10 +18,10 @@ export const UserProvider = ({ children }) => {
     });
   };
 
-  // const resetData = () => {
-  //   setUserData({});
-  //   setErrors({});
-  // };
+  const resetUserData = () => {
+    setUserData({});
+    setErrors({});
+  };
 
   return (
     <UserContext.Provider
@@ -30,6 +30,8 @@ export const UserProvider = ({ children }) => {
         userData,
         errors,
         setErrors,
+        setUserData,
+        resetUserData,
       }}
     >
       {children}

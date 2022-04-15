@@ -49,7 +49,7 @@ const Cart = () => {
           <Box display='flex' gap justifyContent={'center'} my>
             <Button
               variant='contained'
-              color='primary'
+              color='error'
               component={Link}
               to='/checkout'
               startIcon={<PointOfSaleIcon />}
