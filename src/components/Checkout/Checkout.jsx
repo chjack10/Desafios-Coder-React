@@ -22,8 +22,7 @@ const steps = ['Dirección de envío', 'Detalles del pago', 'Chequeo de datos'];
 
 const Checkout = () => {
   const [activeStep, setActiveStep] = useState(0);
-  const { userData, errors, setErrors, resetUserData } =
-    useContext(UserContext);
+  const { userData, setErrors, resetUserData } = useContext(UserContext);
   const { cart, resetCart, totalCartPrice, amountOfItemsInCart } =
     useContext(CartContext);
 
@@ -32,14 +31,15 @@ const Checkout = () => {
   }
 
   const handleNext = () => {
-    //! COMENTADO PARA QUE VAYA AL SIGUIENTE PASO SIN VALIDAR
+    //* COMENTADO PARA QUE VAYA AL SIGUIENTE PASO SIN VALIDAR.
     // const formIsValid =
     //   activeStep === 0
     //     ? validateAddressForm(userData, setErrors)
     //     : validatePaymentForm(userData, setErrors);
     // formIsValid && setActiveStep(activeStep + 1);
     // if (formIsValid) setActiveStep(activeStep + 1);
-    setActiveStep(activeStep + 1);
+
+    setActiveStep(activeStep + 1); //* Comentar esto para activar la validación.
   };
 
   const handleBack = () => {

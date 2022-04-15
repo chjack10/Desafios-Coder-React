@@ -9,7 +9,7 @@ import { db } from '../../firebase/config';
 const ItemListCointainer = () => {
   const [items, setItems] = useState(null);
   const [loading, setLoading] = useState(false);
-  const { categoryId } = useParams();
+  const { categoryId, term } = useParams();
 
   useEffect(async () => {
     setLoading(true);
@@ -23,13 +23,24 @@ const ItemListCointainer = () => {
       const { docs } = await getDocs(q);
       const items = docs.map((doc) => ({ id: doc.id, ...doc.data() }));
 
-      setItems(items);
+      if (term) {
+        const filteredItems = items.filter((item) =>
+          item.title.toLowerCase().includes(term.trim().toLowerCase())
+        );
+        setItems(filteredItems);
+      } else {
+        setItems(items);
+      }
       setLoading(false);
     } catch (err) {
       console.error(err);
     }
-  }, [categoryId]);
+  }, [categoryId, term]);
 
-  return loading ? <LoadingSpinner /> : <ItemList items={items} />;
+  return loading ? (
+    <LoadingSpinner text='Cargando productos...' />
+  ) : (
+    <ItemList items={items} />
+  );
 };
 export default ItemListCointainer;

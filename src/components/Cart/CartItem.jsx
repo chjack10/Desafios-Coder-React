@@ -15,8 +15,8 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
       <Grid container gap>
         <Grid
           item
-          xs='12'
-          md='2'
+          xs={12}
+          md={2}
           display='grid'
           textAlign='center'
           justifyContent='center'
@@ -27,8 +27,8 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
 
         <Grid
           item
-          xs='12'
-          md='2'
+          xs={12}
+          md={2}
           display='grid'
           textAlign='center'
           justifyContent='center'
@@ -39,9 +39,9 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
 
         <Grid
           item
-          xs='12'
-          sm='3'
-          md='2'
+          xs={12}
+          sm={3}
+          md={2}
           display='grid'
           textAlign='center'
           justifyContent='center'
@@ -55,9 +55,9 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
 
         <Grid
           item
-          xs='12'
-          sm='3'
-          md='2'
+          xs={12}
+          sm={3}
+          md={2}
           display='grid'
           textAlign='center'
           justifyContent='center'
@@ -69,9 +69,9 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
 
         <Grid
           item
-          xs='12'
-          sm='3'
-          md='2'
+          xs={12}
+          sm={3}
+          md={2}
           display='grid'
           textAlign='center'
           justifyContent='center'
@@ -85,9 +85,9 @@ const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
 
         <Grid
           item
-          xs='12'
-          sm='2'
-          md='1'
+          xs={12}
+          sm={2}
+          md={1}
           display='grid'
           textAlign='center'
           justifyContent='center'

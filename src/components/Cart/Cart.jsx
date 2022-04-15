@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, Fragment } from 'react';
 import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 
@@ -27,14 +27,10 @@ const Cart = () => {
         <>
           <Container className='animate__animated animate__fadeIn'>
             {cart.map((item) => (
-              <>
-                <CartItem
-                  key={item.id}
-                  {...item}
-                  removeItemFromCart={removeItemFromCart}
-                />
-                <Divider va riant='middle' sx={{ my: 3 }} />
-              </>
+              <Fragment key={item.id}>
+                <CartItem {...item} removeItemFromCart={removeItemFromCart} />
+                <Divider variant='middle' sx={{ my: 3 }} />
+              </Fragment>
             ))}
           </Container>
 

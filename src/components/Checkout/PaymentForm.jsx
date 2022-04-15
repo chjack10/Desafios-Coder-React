@@ -19,7 +19,6 @@ const PaymentForm = () => {
             name='cardName'
             label='Nombre en la tarjeta'
             fullWidth
-            autoComplete='cc-name'
             variant='standard'
             value={userData.cardName}
             error={!!errors.cardName}
@@ -36,7 +35,6 @@ const PaymentForm = () => {
             label='Número de tarjeta'
             type='number'
             fullWidth
-            autoComplete='cc-number'
             variant='standard'
             value={userData.cardNumber}
             error={!!errors.cardNumber}
@@ -47,13 +45,11 @@ const PaymentForm = () => {
         <Grid item xs={12} md={6}>
           <TextField
             InputLabelProps={{ shrink: true }}
-            shrink
             type='month'
             id='expDate'
             name='cardExpDate'
             label='Fecha de vencimiento'
             fullWidth
-            autoComplete='cc-exp'
             variant='standard'
             value={userData.cardExpDate}
             error={!!errors.cardExpDate}
@@ -68,7 +64,6 @@ const PaymentForm = () => {
             type='password'
             label='CVV'
             fullWidth
-            autoComplete='cc-csc'
             variant='standard'
             value={userData.cardCvv}
             error={!!errors.cardCvv}

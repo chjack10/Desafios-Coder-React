@@ -1,8 +1,10 @@
-import * as React from 'react';
+import { useNavigate } from 'react-router-dom';
+
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
 import SearchIcon from '@mui/icons-material/Search';
 
+//styled components
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
@@ -38,21 +40,27 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create('width'),
     width: '100%',
     [theme.breakpoints.up('md')]: {
-      width: '38ch',
+      width: '39ch',
     },
   },
 }));
 
-const SearchBar = () => (
-  <Search>
-    <SearchIconWrapper>
-      <SearchIcon />
-    </SearchIconWrapper>
-    <StyledInputBase
-      placeholder='Buscar...'
-      inputProps={{ 'aria-label': 'buscar' }}
-    />
-  </Search>
-);
+const SearchBar = () => {
+  const navigate = useNavigate();
+  const handleSearch = ({ target: { value } }) => navigate(`/search/${value}`);
+
+  return (
+    <Search>
+      <SearchIconWrapper>
+        <SearchIcon />
+      </SearchIconWrapper>
+      <StyledInputBase
+        placeholder='Buscar...'
+        inputProps={{ 'aria-label': 'buscar' }}
+        onChange={handleSearch}
+      />
+    </Search>
+  );
+};
 
 export default SearchBar;

@@ -30,7 +30,7 @@ const Review = () => {
       </Typography>
       <List disablePadding>
         {cart.map((item) => (
-          <ListItem key={item.name} sx={{ py: 1, px: 0 }}>
+          <ListItem key={item.title} sx={{ py: 1, px: 0 }}>
             <ListItemText
               primary={item.title}
               secondary={`Cantidad: ${item.quantity}`}
@@ -41,7 +41,7 @@ const Review = () => {
           </ListItem>
         ))}
 
-        <ListItem sx={{ py: 1, px: 0 }}>
+        <ListItem key={1} sx={{ py: 1, px: 0 }}>
           <ListItemText primary='Total' />
           <Typography variant='subtitle1' sx={{ fontWeight: 700 }}>
             {`${totalCartPrice()}`}

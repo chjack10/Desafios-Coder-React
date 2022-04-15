@@ -19,7 +19,6 @@ const AddressForm = () => {
             name='name'
             label='Nombre'
             fullWidth
-            autoComplete='given-name'
             variant='standard'
             value={userData.name}
             onChange={handleChange}
@@ -33,7 +32,6 @@ const AddressForm = () => {
             name='lastName'
             label='Apellido'
             fullWidth
-            autoComplete='family-name'
             variant='standard'
             value={userData.lastName}
             error={!!errors.lastName}
@@ -48,7 +46,6 @@ const AddressForm = () => {
             name='email'
             label='E-mail'
             fullWidth
-            autoComplete='e-mail'
             variant='standard'
             value={userData.email}
             error={!!errors.email}
@@ -62,7 +59,6 @@ const AddressForm = () => {
             name='address'
             label='Dirección'
             fullWidth
-            autoComplete='shipping address-line'
             variant='standard'
             value={userData.address}
             error={!!errors.address}
@@ -76,7 +72,6 @@ const AddressForm = () => {
             name='city'
             label='Ciudad'
             fullWidth
-            autoComplete='shipping address-level2'
             variant='standard'
             value={userData.city}
             error={!!errors.city}
@@ -104,7 +99,6 @@ const AddressForm = () => {
             name='zip'
             label='Código postal'
             fullWidth
-            autoComplete='shipping postal-code'
             variant='standard'
             value={userData.zip}
             error={!!errors.zip}
@@ -119,7 +113,6 @@ const AddressForm = () => {
             name='phoneNumber'
             label='Número de teléfono'
             fullWidth
-            autoComplete='Phone number'
             variant='standard'
             value={userData.phoneNumber}
             error={!!errors.phoneNumber}

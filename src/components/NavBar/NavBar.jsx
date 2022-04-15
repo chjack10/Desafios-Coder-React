@@ -14,8 +14,6 @@ import ThemeContext from '../../context/ThemeContext';
 const NavBar = () => {
   const pages = ['Desktops', 'Notebooks', 'Gadgets'];
 
-//#91002e
-
   return (
     <ThemeContext>
       <AppBar position='static' sx={{ bgcolor: '#91002e' }}>
@@ -27,7 +25,6 @@ const NavBar = () => {
               <SearchBar />
             </Container>
             <CartWidget />
-           
           </Toolbar>
         </Container>
       </AppBar>
