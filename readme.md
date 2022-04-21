@@ -1,21 +1,30 @@
-# Lanus Tech
-
-## _A simple React.js e-commerce project_
+# Lanus Tech - _A simple React.js e-commerce project_
 
 ### What to expect from this project?
 
-- A main page where products are enlisted as cards.
+- A main page where products, fetched from Firebase, are enlisted as cards.
+- Each product has its own stock. Said stock gets updated in Firebase everytime a new purchase has been made.
 - A detail view for every product.
-- A view for every product category.
+- Functional search bar.
+- Full checkout process including the dispatch and storage of the generated order to Firebase.
+- Persistant cart using localStorage.
+- Satisfactory user experience.
 
 ### Libraries/frameworks used in this project
 
 | Name               | Purpose       |
 | ------------------ | ------------- |
 | React-router v6    | Navigation    |
-| Material-ui v5.5.2 | css framework |
+| Material-ui v5.5.2 | Css framework |
 | Animate.css v4     | Animations    |
+| Firebase v9.6.10   | Database      |
 
 ---
 
-![CoderHouse](https://is2-ssl.mzstatic.com/image/thumb/Purple116/v4/b8/aa/5a/b8aa5aa3-fa49-9e2b-a93a-552dc84f4bd0/source/256x256bb.jpg)
+### Demo
+
+[LanusTech](https://LINK.com/)
+
+---
+
+<div style="text-align:center"><img src="https://seeklogo.com/images/L/Lanus-logo-09E57DE215-seeklogo.com.png" /></div>.

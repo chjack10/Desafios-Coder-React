@@ -6,10 +6,6 @@ import Alert from '@mui/material/Alert';
 const SuccessSnackbar = ({ message }) => {
   const [open, setOpen] = useState(true);
 
-  // const handleClick = () => {
-  //   setOpen(true);
-  // };
-
   const handleClose = (event, reason) => {
     if (reason === 'clickaway') {
       return;

@@ -7,7 +7,7 @@ import Tooltip from '@mui/material/Tooltip';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 const CartItem = ({ id, title, price, quantity, removeItemFromCart }) => {
-  const imgPath = `../../src/assets/img/${id}.jpg`;
+  const imgPath = `/assets/img/${id}.jpg`;
   const handleRemoveItem = () => removeItemFromCart(id);
 
   return (

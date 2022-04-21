@@ -5,8 +5,6 @@ import { UserContext } from '../../context/UserContext';
 import { CartContext } from '../../context/CartContext';
 
 import getStepContent from '../../helpers/getStepContent';
-import validateAddressForm from '../../helpers/validateAddressForm';
-import validatePaymentForm from '../../helpers/validatePaymentForm';
 import DispatchCheckout from './DispatchCheckout';
 
 import Box from '@mui/material/Box';
