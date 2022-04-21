@@ -7,7 +7,7 @@ import Typography from '@mui/material/Typography';
 import { Button, CardActionArea, CardActions } from '@mui/material';
 
 const Item = ({ id, title, price }) => {
-  const imgPath = `assets/img/${id}.jpg`;
+  const imgPath = `../assets/img/${id}.jpg`;
   const navigate = useNavigate();
   const handleNavigation = () => navigate(`/item/${id}`);
 

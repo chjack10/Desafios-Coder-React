@@ -31,6 +31,7 @@ const ItemListCointainer = () => {
       } else {
         setItems(items);
       }
+      
       setLoading(false);
     } catch (err) {
       console.error(err);
