@@ -4,8 +4,11 @@ import { Navigate } from 'react-router-dom';
 import { UserContext } from '../../context/UserContext';
 import { CartContext } from '../../context/CartContext';
 
-import getStepContent from '../../helpers/getStepContent';
 import DispatchCheckout from './DispatchCheckout';
+
+import getStepContent from '../../helpers/getStepContent';
+import validateAddressForm from '../../helpers/validateAddressForm';
+import validatePaymentForm from '../../helpers/validatePaymentForm';
 
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -29,15 +32,12 @@ const Checkout = () => {
   }
 
   const handleNext = () => {
-    //* COMENTADO PARA QUE VAYA AL SIGUIENTE PASO SIN VALIDAR.
-    // const formIsValid =
-    //   activeStep === 0
-    //     ? validateAddressForm(userData, setErrors)
-    //     : validatePaymentForm(userData, setErrors);
-    // formIsValid && setActiveStep(activeStep + 1);
-    // if (formIsValid) setActiveStep(activeStep + 1);
+    const formIsValid =
+      activeStep === 0
+        ? validateAddressForm(userData, setErrors)
+        : validatePaymentForm(userData, setErrors);
 
-    setActiveStep(activeStep + 1); //* Comentar esto para activar la validación.
+    if (formIsValid) setActiveStep(activeStep + 1);
   };
 
   const handleBack = () => {

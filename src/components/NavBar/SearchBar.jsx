@@ -1,4 +1,7 @@
+import { useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
+
+import debounce from '../../helpers/debounce';
 
 import { styled, alpha } from '@mui/material/styles';
 import InputBase from '@mui/material/InputBase';
@@ -47,7 +50,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const SearchBar = () => {
   const navigate = useNavigate();
-  const handleSearch = ({ target: { value } }) => navigate(`/search/${value}`);
+
+  const debouncedSearchHandler = useMemo(() => {
+    return debounce(
+      ({ target: { value } }) => navigate(`/search/${value}`),
+      600
+    );
+  }, []);
 
   return (
     <Search>
@@ -57,7 +66,7 @@ const SearchBar = () => {
       <StyledInputBase
         placeholder='Buscar...'
         inputProps={{ 'aria-label': 'buscar' }}
-        onChange={handleSearch}
+        onChange={debouncedSearchHandler}
       />
     </Search>
   );

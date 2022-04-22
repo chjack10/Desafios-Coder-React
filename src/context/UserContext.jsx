@@ -1,5 +1,4 @@
 import { useState, createContext } from 'react';
-
 export const UserContext = createContext();
 
 export const UserProvider = ({ children }) => {
@@ -20,6 +19,7 @@ export const UserProvider = ({ children }) => {
   const [errors, setErrors] = useState({});
 
   const handleChange = ({ target: { name, value } }) => {
+    console.log(userData);
     setUserData({
       ...userData,
       [name]: value,

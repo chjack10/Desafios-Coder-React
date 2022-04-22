@@ -60,7 +60,7 @@ const ItemDetail = ({ id, title, description, price, stock }) => {
           </Box>
         </Grid>
 
-        <Grid item sm={6} md={8}>
+        <Grid item xs={12} sm={6} md={8}>
           <Typography component='h3' textAlign='center' gutterBottom>
             {title}
           </Typography>

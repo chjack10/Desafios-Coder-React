@@ -18,7 +18,7 @@ const Success = ({ orderId }) => {
       </Typography>
 
       <Typography variant='subtitle1'>
-        Tu código de compra es{' '}
+        Tu código de compra es:{' '}
         <Typography variant='subtitle' color='primary'>
           {orderId}
         </Typography>

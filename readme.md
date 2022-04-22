@@ -27,4 +27,4 @@
 
 ---
 
-<div style="text-align:center"><img src="https://seeklogo.com/images/L/Lanus-logo-09E57DE215-seeklogo.com.png" /></div>.
+<div style="text-align:center"><img src="https://seeklogo.com/images/L/Lanus-logo-09E57DE215-seeklogo.com.png" /></div>
