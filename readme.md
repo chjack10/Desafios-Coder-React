@@ -23,7 +23,7 @@
 
 ### Demo
 
-[LanusTech](https://LINK.com/)
+[LanusTech](https://lanustech.vercel.app/)
 
 ---
 
